@@ -1,10 +1,12 @@
 from django.db import models
 
-
 # Create your models here.
 # Character trait models here
 # for Moves that is going to be difficult. Use a html special html form. So just a link. If there is a link then
 # inherit or link it.
+# Copy below for import list
+# Outline, Background, Drives, Natures, Connections, Stats, WeaponSkills, RoguishFeats, Moves
+
 
 class Outline(models.Model):
     name = models.CharField(max_length=100)

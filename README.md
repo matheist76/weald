@@ -2,8 +2,8 @@
 A weald is a woodland. It also rhymes wwith yield which means to give way to arguments, demands or pressure.
 So this webapp is designed to help a GM of a Root RPG create characters. Layout their woodland. Etc. Look 
 this isn't going to be pretty or very good. I don't do this stuff for a livings so yeah it's going to be 
-absolute crap but if you want something better do it yourself don't bug me. Yeah this is going to be crap. Deal with it.
-PS I'm also terrible at grammar and spelling. If this bothers you copy someone elses stuff you lazy git. 
+absolute crap but if you want something better do it yourself don't bug me. Deal with it. PS I'm also 
+terrible at grammar and spelling. If this bothers you copy someone elses stuff you lazy git. 
 
 Structure
 
