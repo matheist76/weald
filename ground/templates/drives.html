@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drives</title>
+</head>
+<body>
+<h1 style="text-align:center;">Create and View Player Drives</h1>
+<h2 style="text-align:center;"></h2>
+<table border="1">
+{% for x in member %}
+ <tr>
+ <td>{{ x.name}}</td>
+ <td>{{ x.description }}</td>
+ </tr>
+{% endfor %}
+</table>
+
+<form action="addrecord/" method="post">{% csrf_token %}
+   Name:<br> <input name="name"> <br>
+   Description:<br> <input name="description">
+   <input type="submit" value="Submit">
+</form>
+<a href="index.html">Home</a>
+</body>
+</html>
