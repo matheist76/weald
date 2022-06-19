@@ -39,11 +39,11 @@ class Connections(models.Model):
 
 
 class Stats(models.Model):
-    charm = models.SmallIntegerField()
-    cunning = models.SmallIntegerField()
-    finesse = models.SmallIntegerField()
-    luck = models.SmallIntegerField()
-    might = models.SmallIntegerField()
+    charm = models.CharField(max_length=5)
+    cunning = models.CharField(max_length=5)
+    finesse = models.CharField(max_length=5)
+    luck = models.CharField(max_length=5)
+    might = models.CharField(max_length=5)
 
 
 class WeaponSkills(models.Model):
