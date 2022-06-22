@@ -8,8 +8,10 @@ terrible at grammar and spelling. If this bothers you copy someone elses stuff y
 Structure
 
 Weald  - Main Program links to others
--> Players section: Used to allow players access to their character sheets. Create their own characters (given GM constraints) etc.
--> GM section: Used to build characters, setup character contraints for players to build characters, create vagabond types etc.
+-> Players section: Used to allow players access to their character sheets. Create their own characters (given GM 
+constraints) etc.
+-> GM section: Used to build characters, setup character contraints for players to build characters, create vagabond 
+types etc.
 
 Todo
 
@@ -20,6 +22,27 @@ So index.html
 -> settings.html
 Please insert expletives here. Man it took longer than I admit to get that .... done. Yes I really am that dum. Okay
 now onto working out basic stuff.
+
+22/6/2022
+   ground/models/traits.py is used by playbook to fill out the character sheet. So only stuff that doesn't change goes 
+   here. The only way to change data in traits will be through admin. Think of traits as ingredents which the method 
+   playbook turns into a character sheet.
+
+   ground/models/playbook.py the stuff here will be used by the playbook form to create the character sheet. So this is
+   specific to a particula playbook.
+
+   ground/models/character_sheets.py this db table will hold the character sheets for all of the players. So it will 
+   contain the varible and the constants. 
+
+
+traits.py 
+
+
+playbook.py
+
+
+character_sheets.py
+
 
 Vagabond = player. All players play as Vagabonds so while for other stuff, for example the board game, Vagabonds and 
 players aren't equivalent they are here. At this point we learn that Magpie Games hates programmers. Or at least doesn't
