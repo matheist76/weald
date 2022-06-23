@@ -10,24 +10,40 @@ from .playbook import *
 # Character varibles: reputation for each faction you have a reputation track which has 24 boxes, 5 stats -2 > +3, 3 harm tracks 4 boxes,
 # equipment
 
-class character(model.model):
-    player = models.CharField(max_length=100)
+class Character(models.Model):
+    drive1 = models.ForeignKey(Drives, on_delete=models.CASCADE) # from traits selected by playbook
+    drive2 = models.ForeignKey(Drives, on_delete=models.CASCADE) # from traits selected by playbook
+    nature = models.ForeignKey(Natures, on_delete=models.CASCADE) # from traits selected by playbook
+    connection1 = models.ForeignKey(Connections, on_delete=models.CASCADE) # from traits selected by playbook
+    connection2 = models.ForeignKey(Connections, on_delete=models.CASCADE) # from traits selected by playbook
+
+
+class Outline(models.Model):
     name = models.CharField(max_length=100)
     species = models.CharField(max_length=100)
-    details = models.CharField(max_length=200)
-    # background
-    drive1 = models.ForeignKey(Drives, on_delete=models.CASCADE) # from traits selected by playbook
-    drive2 = models.ForeignKey(Drives, on_delete=models.CASCADE) # from triats selected by playbook
-    nature = models.ForeignKey(Natures, on_delete=models.CASCADE)
-    connection1 = models.ForeignKey(Connections, on_delete=models.CASCADE)
-    connection2 = models.ForeignKey(Connections, on_delete=models.CASCADE)
+    details = models.CharField(max_length=180)
+    demeanor = models.CharField(max_length=100)
 
 
+class Reputation(models.Model):
+    # insert logic here
+    faction = models.CharField(max_length=20)
+    rep_number = models.PositiveSmallIntegerField(default=10)# 0-24
+    def convert_rep_number(self):
+        rep_structure = ["-3", "2.2", "2.1", "2", "1.2", "1.1", "1", ".2", ".1", "0", ".1", ".2", ".3", ".4", "1", "1.1", "1.2", "1.3", "1.4", "2", "2.1", "2.2", "2.3", "2.4", "3"]
+        reputation = rep_structure[self.rep_number]
+        return reputation
 
-class char_name(models.Model):
+
+class Stats(models.Model):
+    charm = models.SmallIntegerField()
+    cunning = models.SmallIntegerField()
+    finesse = models.SmallIntegerField()
+    luck = models.SmallIntegerField()
+    might = models.SmallIntegerField()
 
 
-class char_details(models.Model):
-
-
-class char_demeanor(models.Model):
+class HarmTrack(models.Model):
+    injury = models.PositiveSmallIntegerField(default=0)
+    exhaustion = models.PositiveSmallIntegerField(default=0)
+    depletion = models.PositiveSmallIntegerField(default=0)

@@ -5,15 +5,20 @@ from django.db import models
 # for Moves that is going to be difficult. Use a html special html form. So just a link. If there is a link then
 # inherit or link it.
 # Copy below for import list
-# Outline, Background, Drives, Natures, Connections, WeaponSkills, RoguishFeats, Moves
+# Background, Drives, Natures, Connections, WeaponSkills, RoguishFeats, Moves
 
 
-class Background(models.Model):
-    home = models.CharField(max_length=100)
-    why = models.CharField(max_length=100)
-    what = models.CharField(max_length=100)
-    posifaction = models.CharField(max_length=100)
-    negafaction = models.CharField(max_length=100)
+class BgQuestions(models.Model):
+    QUESTION_TYPES_CHOICES = (('Q1', 'Where'), ('Q2', 'Why'), ('Q3', 'Whom or What'), ('Q4', 'Amity Faction'), ('Q5', 'Enmity Faction'))
+    question = models.CharField(max_length=100)
+    question_type = models.CharField(max_length=2, choices=QUESTION_TYPES_CHOICES)
+
+
+class BgAnswers(models.Model):
+    description = models.CharField(max_length=100)
+    quest_id = models.ForeignKey(BgQuestions, on_delete=models.CASCADE)
+    player_added_txt = models.CharField(max_length=20)
+    selectable = models.BooleanField(default=False)
 
 
 class Drives(models.Model):
@@ -33,13 +38,33 @@ class Connections(models.Model):
 
 
 class RoguishFeats(models.Model):
-    name = models.CharField(max_length=20, primary_key=True)
+    name = models.CharField(max_length=20)
+    selectable = models.BooleanField(default=False)
+    bold = models.BooleanField(default=False)
 
 
 class WeaponSkills(models.Model):
-    name = models.CharField(max_length=20, primary_key=True)
+    name = models.CharField(max_length=20)
+    selectable = models.BooleanField(default=False)
+    bold = models.BooleanField(default=False)
+
+
+class Options(models.Model):
+    selectable = models.BooleanField(default=False)
+    name = models.CharField(max_length=20)
+    description = models.CharField(max_length=180)
+
+
+class Equipment(models.Model):
+    name = models.CharField(max_length=20)
+    wear = models.PositiveSmallIntegerField()
+    cost = models.PositiveSmallIntegerField()
+    tags = models.CharField(max_length=20)
+    # Still needs more work
 
 
 class Moves(models.Model):
     name = models.CharField(max_length=30, primary_key=True)
     description = models.CharField(max_length=300)
+    options = models.ForeignKey(Options, on_delete=models.CASCADE, blank=True, null=True)
+    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE, blank=True, null=True)
