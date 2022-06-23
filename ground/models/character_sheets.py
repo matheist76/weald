@@ -26,9 +26,10 @@ class Outline(models.Model):
 
 
 class Reputation(models.Model):
-    # insert logic here
     faction = models.CharField(max_length=20)
     rep_number = models.PositiveSmallIntegerField(default=10)# 0-24
+
+    @property
     def convert_rep_number(self):
         rep_structure = ["-3", "2.2", "2.1", "2", "1.2", "1.1", "1", ".2", ".1", "0", ".1", ".2", ".3", ".4", "1", "1.1", "1.2", "1.3", "1.4", "2", "2.1", "2.2", "2.3", "2.4", "3"]
         reputation = rep_structure[self.rep_number]

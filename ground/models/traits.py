@@ -49,18 +49,41 @@ class WeaponSkills(models.Model):
     bold = models.BooleanField(default=False)
 
 
-class Options(models.Model):
-    selectable = models.BooleanField(default=False)
-    name = models.CharField(max_length=20)
-    description = models.CharField(max_length=180)
+class Ranges(models.Model):
+    name = models.CharField(max_length=20, primary_key=True)
 
+    def __str__(self):
+        return self.name
+
+
+class WeaponSkillTag(models.Model):
+    name = models.CharField(max_length=20, primary_key=True)
+
+    def __str__(self):
+        return self.name
+
+class SpecialTags(models.Model):
+    name = models.CharField(max_length=20, primary_key=True)
+    description = models.CharField(max_length=200)
+    bullet_type = models.SmallIntegerField()
+
+    def __str__(self):
+        return self.name
 
 class Equipment(models.Model):
     name = models.CharField(max_length=20)
     wear = models.PositiveSmallIntegerField()
     cost = models.PositiveSmallIntegerField()
-    tags = models.CharField(max_length=20)
-    # Still needs more work
+    ranges = models.ManyToManyField(Ranges, related_name="equipments", blank=True)
+    harm = models.CharField(max_length=20)
+    weapon_skill_tags = models.ManyToManyField(WeaponSkillTag, related_name="equipments", blank=True)
+    special_tags = models.ManyToManyField(SpecialTags, related_name="equipments", blank=True)
+
+
+class Options(models.Model):
+    selectable = models.BooleanField(default=False)
+    name = models.CharField(max_length=20)
+    description = models.CharField(max_length=180)
 
 
 class Moves(models.Model):
