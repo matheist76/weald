@@ -13,7 +13,15 @@ constraints) etc.
 -> GM section: Used to build characters, setup character contraints for players to build characters, create vagabond 
 types etc.
 
+So this is going to be complicated. So rather than put this into a text file I've used a mind map online 
+program. Here is the link. Hope this helps to understand the program. https://mm.tt/map/2331257264?t=HO5wlcReZp
+
+I think the hardest problem to solve for this project will be the db. 
+
 Todo
+ * Create the basic db tables. The 1st and hardest one with be the traits db. Once that's done then it will 
+the rest will just fall into place. The playbooks are simply pick and chose from the traits db.
+ * Create Playbooks
 
 1st start creating the start page. Nothing fancy just a couple of links
 So index.html
