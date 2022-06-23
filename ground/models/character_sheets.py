@@ -1,6 +1,6 @@
 from django.db import models
-from .traits import *
-from .playbook import *
+#from .traits import *
+#from .playbook import *
 
 
 # Characters need the following a:
@@ -9,14 +9,6 @@ from .playbook import *
 # but best to leave those options open.): roguish_feats 9 options some pre chosen, weapon_skills 10 options, moves 6 options.
 # Character varibles: reputation for each faction you have a reputation track which has 24 boxes, 5 stats -2 > +3, 3 harm tracks 4 boxes,
 # equipment
-
-class Character(models.Model):
-    drive1 = models.ForeignKey(Drives, on_delete=models.CASCADE) # from traits selected by playbook
-    drive2 = models.ForeignKey(Drives, on_delete=models.CASCADE) # from traits selected by playbook
-    nature = models.ForeignKey(Natures, on_delete=models.CASCADE) # from traits selected by playbook
-    connection1 = models.ForeignKey(Connections, on_delete=models.CASCADE) # from traits selected by playbook
-    connection2 = models.ForeignKey(Connections, on_delete=models.CASCADE) # from traits selected by playbook
-
 
 class Outline(models.Model):
     name = models.CharField(max_length=100)
@@ -48,3 +40,14 @@ class HarmTrack(models.Model):
     injury = models.PositiveSmallIntegerField(default=0)
     exhaustion = models.PositiveSmallIntegerField(default=0)
     depletion = models.PositiveSmallIntegerField(default=0)
+
+
+class Character(models.Model):
+    player = models.CharField(max_length=20)
+    outline = models.ForeignKey(Outline, on_delete=models.CASCADE)
+    # need to get background from playbook
+    drive1 = models.ForeignKey(Drives, on_delete=models.CASCADE) # from traits selected by playbook
+    drive2 = models.ForeignKey(Drives, on_delete=models.CASCADE) # from traits selected by playbook
+    nature = models.ForeignKey(Natures, on_delete=models.CASCADE) # from traits selected by playbook
+    connection1 = models.ForeignKey(Connections, on_delete=models.CASCADE) # from traits selected by playbook
+    connection2 = models.ForeignKey(Connections, on_delete=models.CASCADE) # from traits selected by playbook

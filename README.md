@@ -18,6 +18,32 @@ program. Here is the link. Hope this helps to understand the program. https://mm
 
 I think the hardest problem to solve for this project will be the db. 
 
+
+-- Playbook --
+Okay so let's try and bring this all together.
+These db models are what is used to define a particular playbook. Now of the worst of these project playbooks is the
+"The Pirate" The breaks in normal rules in this monstrosity just ... so what is in a playbook? Take the background. We
+use background questions and answers to create a background for the character so for the 3rd Question we have "What
+happend to your captain?" then 5 choices. None of these match with any other vagabond playbook. So we need the playbook
+to limit from the traits what the player can choose.
+# TODO 1. Create Name & Description - strings
+# TODO 2. Example outlines - player makes their own.
+# TODO 3. Background - List of 5 Questions and the related answers. Note: Q4&5 change prestige so maybe need a way to signify this. 
+# TODO I need a faction table then I need someway to link that with the question. mmmmmmm
+#4. Drives - List of 4 choices where the user can select only 2
+#5. Nature - List of 2 choices where the user picks just one.
+#6. Connections - Name which can't be a primary key, description and user text.
+#7. Stats - plus or minus for each stat
+#8. Harm - don't touch I don't think.
+#9. Roguish Feats - A direction with some feats that can be preselected.
+#10. Weapon Skills - Like Roguish feats except that skills aren't preselected the available options are in bold.
+#11. Moves - A direction with maybe some chosen. At this point to I find out different present selected but allow
+#....for other options to be selected at a later point. You can gain other moves. See P175 of Core Book.
+#12. Equipment - Each playbook has some starting equipment stuff but the only thing that changes is the Starting value.
+#....However with a few move options you get stuff. Example Pirate you get a ship, Prince gets a heirloom weapon.
+
+
+
 Todo
  * Create the basic db tables. The 1st and hardest one with be the traits db. Once that's done then it will 
 the rest will just fall into place. The playbooks are simply pick and chose from the traits db.

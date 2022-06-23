@@ -7,6 +7,11 @@ from django.db import models
 # Copy below for import list
 # Background, Drives, Natures, Connections, WeaponSkills, RoguishFeats, Moves
 
+class Options(models.Model):
+    selectable = models.BooleanField(default=False)
+    name = models.CharField(max_length=20)
+    description = models.CharField(max_length=180)
+
 
 class BgQuestions(models.Model):
     QUESTION_TYPES_CHOICES = (('Q1', 'Where'), ('Q2', 'Why'), ('Q3', 'Whom or What'), ('Q4', 'Amity Faction'), ('Q5', 'Enmity Faction'))
@@ -78,12 +83,6 @@ class Equipment(models.Model):
     harm = models.CharField(max_length=20)
     weapon_skill_tags = models.ManyToManyField(WeaponSkillTag, related_name="equipments", blank=True)
     special_tags = models.ManyToManyField(SpecialTags, related_name="equipments", blank=True)
-
-
-class Options(models.Model):
-    selectable = models.BooleanField(default=False)
-    name = models.CharField(max_length=20)
-    description = models.CharField(max_length=180)
 
 
 class Moves(models.Model):
